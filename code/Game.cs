@@ -21,6 +21,11 @@ partial class DeathmatchGame : Game
 		{
 			DmHUD = new DeathmatchHud();
 		}
+
+		new ArmouryWeapon( "SMG", "dm_smg", "weapons/rust_smg/rust_smg.vmdl" );
+		new ArmouryWeapon( "Shotgun", "dm_shotgun", "weapons/rust_pumpshotgun/rust_pumpshotgun.vmdl" ) { AngleOffset = new Angles( 0, 90f, 0 ) };
+		new ArmouryWeapon( "Pistol", "dm_pistol", "weapons/rust_pistol/rust_pistol.vmdl" ) { AngleOffset = new Angles( 0, 90f, 0 ) };
+		new ArmouryWeapon( "Crossbow", "dm_crossbow", "weapons/rust_crossbow/rust_crossbow.vmdl" );
 	}
 
 	[Event.Hotload]

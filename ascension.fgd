@@ -1,0 +1,48 @@
+// 
+// DeathmatchGame : Sandbox.Game 
+// 
+@PointClass = ascension : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+]
+
+// 
+// Crossbow : BaseDmWeapon 
+// 
+@SolidClass = dm_crossbow : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+]
+
+// 
+// CrossbowBolt : Sandbox.ModelEntity 
+// 
+@SolidClass = crossbow_bolt : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+]
+
+// 
+// Pistol : BaseDmWeapon 
+// 
+@SolidClass = dm_pistol : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+]
+
+// 
+// Shotgun : BaseDmWeapon 
+// 
+@SolidClass = dm_shotgun : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+]
+
+// 
+// SMG : BaseDmWeapon 
+// 
+@SolidClass = dm_smg : ""
+[
+	targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
+]
+

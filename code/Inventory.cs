@@ -16,6 +16,8 @@ partial class DmInventory : BaseInventory
 		var player = Owner as DeathmatchPlayer;
 		var weapon = ent as BaseDmWeapon;
 		var notices = !player.SupressPickupNotices;
+
+		Log.Info( Owner.ToString() );
 		//
 		// We don't want to pick up the same weapon twice
 		// But we'll take the ammo from it Winky Face

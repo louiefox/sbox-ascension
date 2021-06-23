@@ -1,0 +1,5 @@
+C:\Program Files (x86)\Steam\steamapps\common\sbox\addons\ascension\code\obj\Debug\net5.0\ascension.csprojAssemblyReference.cache
+C:\Program Files (x86)\Steam\steamapps\common\sbox\addons\ascension\code\obj\Debug\net5.0\ascension.GeneratedMSBuildEditorConfig.editorconfig
+C:\Program Files (x86)\Steam\steamapps\common\sbox\addons\ascension\code\obj\Debug\net5.0\ascension.AssemblyInfoInputs.cache
+C:\Program Files (x86)\Steam\steamapps\common\sbox\addons\ascension\code\obj\Debug\net5.0\ascension.AssemblyInfo.cs
+C:\Program Files (x86)\Steam\steamapps\common\sbox\addons\ascension\code\obj\Debug\net5.0\ascension.csproj.CoreCompileInputs.cache

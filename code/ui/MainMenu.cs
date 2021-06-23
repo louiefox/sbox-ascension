@@ -1,50 +1,76 @@
-﻿
-using Sandbox;
+﻿using Sandbox;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
+using System;
+using System.Collections.Generic;
+using Ascension.UI;
 
 public class MainMenu : Panel
 {
 	private bool IsOpen = false;
 	private float LastToggleTime = 0;
 
-	private Label SkillPoints;
+	private Panel NavigationBar;
+	private Panel PageContainer;
+
+	private string ActivePage = "";
+	private Dictionary<string, Sandbox.UI.Label> Buttons = new Dictionary<string, Sandbox.UI.Label>();
 
 	public MainMenu()
 	{
 		StyleSheet.Load( "/ui/MainMenu.scss" );
 
-		Panel navBar = Add.Panel( "navBar" );
-		navBar.Add.Label( "ARMOURY", "navButton" );
-		navBar.Add.Label( "STATISTICS", "navButton" );
-		navBar.Add.Label( "SOCIAL", "navButton" );
+		NavigationBar = Add.Panel( "navBar" );
+		PageContainer = Add.Panel( "pageArea" );
 
-		Panel pageArea = Add.Panel( "pageArea" );
+		AddPage( "ARMOURY", () => PageContainer.AddChild<Ascension.UI.MainMenu.ArmouryPage>() );
+		AddPage( "STATISTICS", () => PageContainer.AddChild<Ascension.UI.MainMenu.StatisticsPage>() );
+		AddPage( "SOCIAL", () => PageContainer.AddChild<Ascension.UI.MainMenu.SocialPage>() );
+	}
 
-		Panel armouryPage = pageArea.Add.Panel( "armouryPage" );
+	private void AddPage( string name, Func<Panel> act = null )
+	{
+		var button = NavigationBar.Add.Label( name, "navButton" );
+		button.AddEvent( "onclick", () => { 
+			SwitchPage( name );
+			act?.Invoke().AddClass( "page" ); 
+		} );
 
-		Panel slot1 = armouryPage.Add.Panel( "armourySlot" );
-		Panel slot2 = armouryPage.Add.Panel( "armourySlot" );
-		slot2.Style.MarginTop = Length.Percent( 4f );
+		Buttons[name] = button;
 
-		SkillPoints = slot2.Add.Label( "Skill Points: 0", "skillPoints" );
+		if( ActivePage == "" )
+		{
+			SwitchPage( name );
+			act?.Invoke().AddClass( "page" );
+			ActivePage = name;
+		}
+	}
+
+	private void SwitchPage( string name )
+	{
+		PageContainer.DeleteChildren();
+
+		foreach ( var child in NavigationBar.Children )
+		{
+			if( child is Sandbox.UI.Label button )
+			{
+				child.SetClass( "active", false );
+			}
+		}
+
+		Buttons[name].SetClass( "active", true );
 	}
 
 	public override void Tick()
 	{
 		base.Tick();
 
-		if( Local.Client.Input.Pressed( InputButton.Menu ) && Time.Now >= LastToggleTime+.1f )
+		if( Input.Pressed( InputButton.Menu ) && Time.Now >= LastToggleTime+.1f )
 		{
 			LastToggleTime = Time.Now;
 			IsOpen = !IsOpen;
 
-			Parent.SetClass( "mainmenuopen", IsOpen );
+			SetClass( "open", IsOpen );
 		}
-
-		DeathmatchPlayer ply = Local.Pawn as DeathmatchPlayer;
-		if( ply == null ) { return; }
-
-		SkillPoints.Text = $"Skill Points: {ply.SkillPoints}";
 	}
 }

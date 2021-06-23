@@ -11,58 +11,48 @@ mainmenu {
 	opacity: 0;
 	width: 60%;
 	height: 60%;
-	background-color: #232931;
+	background-color: #171819;
 	z-index: 100;
 	display: flex;
+	border-radius: 16px;
 
-	label {
-		&.navButton {
-			font-size: 25px;
-			font-weight: bold;
-			color: #4ecca3;
-			background-color: rgba(78, 204, 163, 0.10);
-			width: 100%;
-			padding: 20px 0;
-			text-align: center;
-			margin-bottom: 10px;
-			cursor: pointer;
-			transition: all 0.1s all;
+	&.open {
+		transition: all 0.2s ease-out;
+		pointer-events: all;
+		opacity: 1;
+	}
+
+	.navButton {
+		font-size: 25px;
+		font-weight: bold;
+		color: #6985a7;
+		background-color: rgba(105, 133, 167, 0.10);
+		width: 100%;
+		padding: 20px 0;
+		text-align: center;
+		margin-bottom: 10px;
+		cursor: pointer;
+		transition: all 0.1s all;
+		border-radius: 8px;
+
+		&:hover {
+			background-color: rgba(105, 133, 167, 0.20);
 		}
 
-		&.navButton:hover {
-			background-color: rgba(78, 204, 163, 0.20);
+		&.active {
+			background-color: rgba(105, 133, 167, 0.30);
 		}
 	}
 
-	panel {
-		&.navBar {
-			width: 20%;
-			display: flex;
-			flex-wrap: wrap;
-			margin: 35px;
-		}
-
-		&.pageArea {
-			flex-grow: 1;
-			margin: 35px 35px 35px 0;
-		}
-
-		&.armouryPage {
-			display: flex;
-			flex-wrap: wrap;
-		}
-
-		&.armourySlot {
-			width: 100%;
-			height: 48%;
-			border: 3px solid #393e46;
-		}
+	.navBar {
+		width: 20%;
+		display: flex;
+		flex-wrap: wrap;
+		margin: 35px;
 	}
-}
 
-
-.mainmenuopen mainmenu {
-	transition: all 0.2s ease-out;
-	pointer-events: all;
-	opacity: 1;
+	.pageArea {
+		flex-grow: 1;
+		margin: 35px 35px 35px 0;
+	}
 }

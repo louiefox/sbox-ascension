@@ -12,7 +12,10 @@ public class Crosshair : Panel
 	{
 		StyleSheet.Load( "/ui/Crosshair.scss" );
 
-		for( int i=0; i<5; i++ )
+		Style.Left = Length.Fraction( .5f );
+		Style.Top = Length.Fraction( .5f );
+
+		for ( int i = 0; i < 5; i++ )
 		{
 			var p = Add.Panel( "element" );
 			p.AddClass( $"el{i}" );
@@ -22,7 +25,6 @@ public class Crosshair : Panel
 	public override void Tick()
 	{
 		base.Tick();
-		this.PositionAtCrosshair();
 
 		SetClass( "fire", fireCounter > 0 );
 
